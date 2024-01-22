@@ -6,8 +6,8 @@ $favoris = $result->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
     <section id="bookmarks">
-        <table class="table_fav">
-            <tr>
+        <table>
+            <tr class="rounded-md border border-orange-500">
                 <th>Domaine</th>
                 <th>Libellé</th>
                 <th>Date ajout</th>
