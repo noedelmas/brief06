@@ -7,7 +7,7 @@ $favoris = $result->fetchAll(PDO::FETCH_ASSOC);
 
     <section id="bookmarks">
         <table>
-            <tr class=" border border-orange-500">
+            <tr class="border border-orange-500">
                 <th class="bg-sky-500">Domaine</th>
                 <th class="bg-sky-500">Libellé</th>
                 <th class="bg-sky-500">Date ajout</th>
@@ -19,7 +19,7 @@ $favoris = $result->fetchAll(PDO::FETCH_ASSOC);
                 foreach($favoris as $favori){
             ?>
 
-            <tr>
+            <tr class="hover:bg-slate-500">
                 <td class="rounded-md border border-orange-500"><?php echo $favori['nom_dom']?></td>
                 <td class="rounded-md border border-orange-500"><?php echo $favori['libelle']?></td>
                 <td class="rounded-md border border-orange-500"><?php echo $favori['date_creation']?></td>
