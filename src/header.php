@@ -8,6 +8,12 @@
     <script src="https://kit.fontawesome.com/0a3766d4f1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+        <!-- Création du header pour l'afficher dans l'index. -->
+
     <header>
-        <h1 class="py-8 flex items-center justify-center">Mes favoris</h1>
+
+            <!-- Créa/déclaration du h1. -->
+
+        <h1 class=" border-4 border-sky-500 flex items-center justify-center">Mes favoris</h1>
     </header>

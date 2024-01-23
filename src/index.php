@@ -13,7 +13,7 @@ include("pdo.php");
 
                 <!-- Déclaration du nom : 'filtre_dom' puis création du résultat selon le domaine sur lequel on clique. -->
 
-            <select name="filtre_dom" class="my-8 rounded rounded-md hover:bg-slate-500">
+            <select name="filtre_dom" class="my-8 rounded rounded-md border-4 border-sky-500 hover:bg-slate-500">
             <?php
             $result = $pdo->query("SELECT * FROM domaine");
             $domaine = $result->fetchAll(PDO::FETCH_ASSOC); 
@@ -30,7 +30,7 @@ include("pdo.php");
 
                 <!-- Création/décla d'un bouton afin de soumettre son résultat pour ensuite éxécuter l'affichage. -->
 
-            <button class="my-4 text align-center rounded rouned-md hover:bg-slate-500" type="submit">
+            <button class="my-4 text align-center rounded rouned-md border-4 border-sky-500 hover:bg-slate-500" type="submit">
                 Appliquer
             </button>
 
