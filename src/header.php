@@ -9,5 +9,5 @@
 </head>
 <body>
     <header>
-        <h1 class="flex items-center justify-center">Mes favoris</h1>
+        <h1 class="py-8 flex items-center justify-center">Mes favoris</h1>
     </header>
