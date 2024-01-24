@@ -11,9 +11,9 @@
 
         <!-- Création du header pour l'afficher dans l'index. -->
 
-    <header>
+    <header class="w-full flex justify-center py-4">
 
-            <!-- Créa/déclaration du h1. -->
+            <!-- Création du h1. -->
 
-        <h1 class=" border-4 w-full border-sky-500 flex items-center justify-center">Mes favoris</h1>
+        <h1 class="text-center border-4 w-1/12 border-orange-500 flex items-center justify-center">Mes favoris</h1>
     </header>

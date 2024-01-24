@@ -16,20 +16,40 @@ include("pdo.php");
 
             <select name="filtre_dom" class="my-8 rounded-md border-4 border-sky-500 hover:bg-slate-500">
                 <option value="">-Toutes-</option>
-            <?php
-            $result = $pdo->query("SELECT * FROM domaine");
-            $domaine = $result->fetchAll(PDO::FETCH_ASSOC); 
-                foreach($domaine as $un_domaine){
+            <?php            
+                $result = $pdo->query("SELECT * FROM domaine");
+                $domaine = $result->fetchAll(PDO::FETCH_ASSOC); 
+                    foreach($domaine as $un_domaine){
             ?>
 
                     <!-- Création/décla d'une option afin de faire comprendre à la machine qu'il faut afficher le domaine par rapport à l'id. -->
 
-                <option value="<?php echo $un_domaine['id_dom']?>"><?php echo $un_domaine['nom_dom']?></option>
+                    <option value="<?php echo $un_domaine['id_dom']?>"><?php echo $un_domaine['nom_dom']?></option>
                 <?php
-                }
-            ?>
+                    }
+                ?>
             </select>
+                <select name="filtre_cat" class="my-8 rounded-md border-4 border-sky-500 hover:bg-slate-500">
+                    <option value="">-Toutes-</option>
+                    <?php
+                        foreach($domaine as $un_domaine){
 
+                    }
+                    ?>
+                </select>
+
+
+
+
+                
+            <select name="Limite" id="">
+                <option value="tout">Tout</option>
+                <option value="1">1</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+                
                 <!-- Création/décla d'un bouton afin de soumettre son résultat pour ensuite éxécuter l'affichage. -->
 
             <button class="my-4 text align-center rouned-md border-4 border-sky-500 hover:bg-slate-500" type="submit">
@@ -46,10 +66,18 @@ include("pdo.php");
             <?php 
                 if (!empty($_GET['filtre_dom'])){
                     print_r($_GET['filtre_dom']);
-                    $rqtsql="SELECT * FROM favori inner join domaine on favori.id_dom = domaine.id_dom where domaine.id_dom =".$_GET['filtre_dom'].";";
+                    $rqtsql="SELECT * FROM favori inner join domaine on favori.id_dom = domaine.id_dom where domaine.id_dom =".$_GET['filtre_dom'];
                 }else{ 
                     $rqtsql = "SELECT * FROM favori inner join domaine";
                 }
+                if (!empty($_GET['Limite'])){
+                    if ($_GET['Limite']!="tout"){
+                        $rqtsql=$rqtsql." LIMIT ".$_GET["Limite"];
+                    }
+                }
+
+                // echo $rqtsql;
+
                 $result = $pdo->query($rqtsql);
                 $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
             ?>
@@ -92,7 +120,7 @@ include("pdo.php");
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><?php echo $favori['nom_dom']?></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><?php echo $favori['libelle']?></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><?php echo $favori['date_creation']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><a href="<?php echo $favori['url']?>">Lien</a></td>
+                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><a href="<?php echo $favori['url']?>">Lien</a></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-rotate" type="submit"></button></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-trash-can" type="submit"></button></td>
             </tr>
