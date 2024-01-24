@@ -15,5 +15,5 @@
 
             <!-- Créa/déclaration du h1. -->
 
-        <h1 class=" border-4 border-sky-500 flex items-center justify-center">Mes favoris</h1>
+        <h1 class=" border-4 w-full border-sky-500 flex items-center justify-center">Mes favoris</h1>
     </header>
