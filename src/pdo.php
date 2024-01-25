@@ -1,7 +1,20 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=favoris', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-// Affichage (SELECT) :
-$result = $pdo->query("SELECT * FROM favori");
-$favoris = $result->fetch(PDO::FETCH_ASSOC); 
-// echo "Bonjour je suis $employe[prenom] $employe[nom] du service $employe[service]<br>";
-//-----------------------------------------------------------------
+
+    // On récupère les constantes de connexion définis dans connect.php
+    require("connect.php");
+
+    // On prépare la connexion à la base de données.
+    $dsn="mysql:dbname=".BASE.";host=".SERVER;
+
+    // On vérifie si nous ne rencontrons pas d'erreur lors de la connexion.
+    try{
+        // Connexion à la bdd.
+        $pdo = new PDO($dsn,USER,PASSWD, array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+
+    } catch(PDOException $e){
+        echo "Échec de connexion : %s/n" .$e->getMEssage();
+        exit();
+    }
+    echo"Connexion réussie";
+
+?>
