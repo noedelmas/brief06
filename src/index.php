@@ -9,12 +9,15 @@ include("pdo.php");
         <form action="" method="GET">
 
             <!-- Rajout d'une bordure pour les filtres -->
-            <fieldset class="flex flex-col border border-slate p-8">
+            <fieldset class="text-center flex flex-col border border-slate p-4">
+                <!-- SearchBar -->
+                <legend>
+                <h2 class="text-zinc-500">SearchBar</h2></legend>
                 <input class="rounded-md border border-orange-400" name="search_bar" type="search">
 
                 <!-- Déclaration du nom : 'filtre_dom' puis création du résultat selon le domaine sur lequel on clique. -->
             <select name="filtre_dom" class="my-4 rounded-md border-4 border-sky-500 hover:bg-slate-500">
-                <option class="text-center" value="aucun">-Tous les domaines-</option>
+                <option class="text-center" value="aucun">-Tous les domaines (par défaut)-</option>
             <?php            
                 $result = $pdo->query("SELECT * FROM domaine");
                 $domaine = $result->fetchAll(PDO::FETCH_ASSOC); 
@@ -30,7 +33,7 @@ include("pdo.php");
                     <!-- Création d'une selection par catégorie -->
             </select>
                 <select name="filtre_cat" class="my-1 rounded-md border-4 border-sky-500 hover:bg-slate-500">
-                    <option class="text-center" value="aucun">-Toutes catégories-</option>
+                    <option class="text-center" value="aucun">-Toutes catégories (par défaut)-</option>
                     <?php
                       
                         $result = $pdo->query("SELECT * FROM categorie");
@@ -54,19 +57,19 @@ include("pdo.php");
                 </select>
                 
             <select class="my-2 text align-center rouned-md border-4 border-orange-400 hover:bg-slate-500" name="Limite" id="">
-                <option value="tout">-Limité à tous (par défaut)-</option>
+                <option class="text-center" value="tout">-Limité à tous (par défaut)-</option>
                 <option value="1">Limite à 1</option>
                 <option value="10">Limite à 10</option>
                 <option value="30">Limite à 30</option>
                 <option value="50">Limite à 50</option>
                 <option value="100">Limite à 100</option>
             </select>
-                
+              
                 <!-- Création/décla d'un bouton afin de soumettre son résultat pour ensuite éxécuter l'affichage. -->
             <button class="my-2 text align-center rouned-md border-4 border-orange-400 hover:bg-slate-500" type="submit">
                 Appliquer
             </button>
-
+            </fieldset>  
                 <!-- Fermeture du bloc formulaire. -->
         </form>
     </section>
@@ -74,7 +77,6 @@ include("pdo.php");
                 <!-- Déclaration de la condition, si le 'filtre_dom' est défini alors la requête sql sélectionne l'id correspondant, l'affiche dans l'url et sur la page en cours. -->
             <?php 
                 if (!empty($_GET['filtre_dom']) || !empty($_GET['filtre_cat'])){
-                    print_r($_GET['filtre_dom']);
                     if ($_GET['filtre_dom'] == "aucun" && $_GET['filtre_cat'] != "aucun"){
                         $rqtsql="SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
                         INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
@@ -151,9 +153,9 @@ include("pdo.php");
                 $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
                
             ?>
-</fieldset>
+
                 <!-- Création d'une balise main regroupant tout mon tableau -->
-<main class="w-full">
+<main class="w-full mt-6">
           
                 <!-- Création de la classe section. -->
     <section class="w-full flex items-center justify-center">
@@ -163,7 +165,7 @@ include("pdo.php");
             <tr class="border border-amber-500">
 
                     <!-- Création de chaque en-tête 1 par 1, colonne par colonne. -->
-                <th class="bg-sky-500">Domaine</th>
+                <th class="hover:bg-gray-50 bg-sky-500">Domaine</th>
                 <th class="bg-sky-500">Libellé</th>
                 <th class="bg-sky-500">Date ajout</th>
                 <th class="bg-sky-500">Catégories</th>
@@ -181,10 +183,10 @@ include("pdo.php");
             <tr class="old:bg-white even:bg-amber-200 hover:bg-zinc-500">
 
                 <!-- Création du contour orange + l'animation quand on passe la souris dessus. -->
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><?php echo $favori['nom_dom']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><?php echo $favori['libelle']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><?php echo $favori['date_creation']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:hover:bg-gray-600"><?php echo $favori['liste_cat']?></td>
+                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['nom_dom']?></td>
+                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['libelle']?></td>
+                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['date_creation']?></td>
+                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['liste_cat']?></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><a href="<?php echo $favori['url']?>">Url</a></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-rotate" type="submit"></button></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-trash-can" type="submit"></button></td>
