@@ -2,13 +2,16 @@
 <?php
 include("header.php");
 include("pdo.php");
-
 ?>
 
         <!-- Création de la section 'filtre_domaine' afin  de pouvoir les filtrer par la suite. -->
     <section class="filtre_domaine flex justify-center">
         <form action="" method="GET">
-                <input class="rounded-md bg-slate-500" name="search_bar" type="search">
+
+            <!-- Rajout d'une bordure pour les filtres -->
+            <fieldset class="flex flex-col border border-slate p-8">
+                <input class="rounded-md border border-slate-500" name="search_bar" type="search">
+
                 <!-- Déclaration du nom : 'filtre_dom' puis création du résultat selon le domaine sur lequel on clique. -->
             <select name="filtre_dom" class="my-8 rounded-md border-4 border-sky-500 hover:bg-slate-500">
                 <option value="aucun">-Tous les domaines-</option>
@@ -50,7 +53,7 @@ include("pdo.php");
                 ?>
                 </select>
                 
-            <select class="my-4 text align-center rouned-md border-4 border-orange-500 hover:bg-slate-500" name="Limite" id="">
+            <select class="my-4 text align-center rouned-md border-4 border-orange-400 hover:bg-slate-500" name="Limite" id="">
                 <option value="tout">-Tous-</option>
                 <option value="1">1</option>
                 <option value="10">10</option>
@@ -60,7 +63,7 @@ include("pdo.php");
             </select>
                 
                 <!-- Création/décla d'un bouton afin de soumettre son résultat pour ensuite éxécuter l'affichage. -->
-            <button class="my-4 text align-center rouned-md border-4 border-orange-500 hover:bg-slate-500" type="submit">
+            <button class="my-4 text align-center rouned-md border-4 border-orange-400 hover:bg-slate-500" type="submit">
                 Appliquer
             </button>
 
@@ -73,9 +76,9 @@ include("pdo.php");
                 if (!empty($_GET['filtre_dom']) || !empty($_GET['filtre_cat'])){
                     print_r($_GET['filtre_dom']);
                     if ($_GET['filtre_dom'] == "aucun" && $_GET['filtre_cat'] != "aucun"){
-                        $rqtsql="SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favori 
-                        INNER JOIN domaine ON favori.id_dom = domaine.id_dom
-                        INNER JOIN cat_fav ON favori.id_fav = cat_fav.id_fav
+                        $rqtsql="SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
+                        INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
+                        INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav
                         INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat
 
                         WHERE categorie.id_cat = ".$_GET['filtre_cat'];
@@ -83,18 +86,18 @@ include("pdo.php");
 
                     }else{
                         if($_GET['filtre_cat'] == "aucun" && $_GET['filtre_dom'] != "aucun"){
-                            $rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favori 
-                            INNER JOIN domaine ON favori.id_dom = domaine.id_dom
-                            INNER JOIN cat_fav ON favori.id_fav = cat_fav.id_fav
+                            $rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
+                            INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
+                            INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav
                             INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat
                             
                             WHERE domaine.id_dom =".$_GET['filtre_dom'];
 
                         }else{
 
-                            $rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favori 
-                                        INNER JOIN domaine ON favori.id_dom = domaine.id_dom
-                                        INNER JOIN cat_fav ON favori.id_fav = cat_fav.id_fav
+                            $rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
+                                        INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
+                                        INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav
                                         INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat
                                         
                                         WHERE domaine.id_dom =".$_GET['filtre_dom']." AND categorie.id_cat = ".$_GET['filtre_cat'];
@@ -120,35 +123,35 @@ include("pdo.php");
                     // $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
                 
                 }else{ 
-                    $rqtsql = "SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favori  
-                    INNER JOIN domaine ON favori.id_dom = domaine.id_dom 
-                    INNER JOIN cat_fav ON favori.id_fav = cat_fav.id_fav 
+                    $rqtsql = "SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favoris  
+                    INNER JOIN domaine ON favoris.id_dom = domaine.id_dom 
+                    INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav 
                     INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat";
                    
                     // echo "on";
                 }
                 if (!empty($_GET['search_bar'])){
-                     $rqtsql = "SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favori  
-                    INNER JOIN domaine ON favori.id_dom = domaine.id_dom 
-                    INNER JOIN cat_fav ON favori.id_fav = cat_fav.id_fav 
+                     $rqtsql = "SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favoris  
+                    INNER JOIN domaine ON favoris.id_dom = domaine.id_dom 
+                    INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav 
                     INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat WHERE libelle LIKE '%".$_GET['search_bar']."%'";
 
 
                 }
-                $rqtsql .= " GROUP BY favori.id_fav ";
+                $rqtsql .= " GROUP BY favoris.id_fav ";
                 if (!empty($_GET['Limite'])){
                     if ($_GET['Limite']!="tout"){
                         $rqtsql=$rqtsql." LIMIT ".$_GET["Limite"];
                     }
                 }
 
-                echo $rqtsql;
+                // echo $rqtsql;
 
                 $result = $pdo->query($rqtsql);
                 $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
                
             ?>
-
+</fieldset>
                 <!-- Création d'une balise main regroupant tout mon tableau -->
 <main class="w-full">
           

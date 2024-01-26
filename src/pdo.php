@@ -15,6 +15,6 @@
         echo "Échec de connexion : %s/n" .$e->getMEssage();
         exit();
     }
-    echo"Connexion réussie";
+    // echo"Connexion réussie";
 
 ?>
