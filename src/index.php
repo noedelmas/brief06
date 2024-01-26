@@ -10,7 +10,7 @@ include("pdo.php");
 
             <!-- Rajout d'une bordure pour les filtres -->
             <fieldset class="text-center flex flex-col border border-slate p-4 border-orange-400">
-                
+
                 <!-- SearchBar -->
                 <legend>
                 <h2 class="text-amber-500">Choix multiples</h2></legend>
@@ -57,7 +57,7 @@ include("pdo.php");
                 ?>
                 </select>
                 
-            <select class="my-2 text align-center rouned-md border-4 border-orange-400 hover:bg-slate-500" name="Limite" id="">
+            <select class="my-2 text align-center rounded-md border-4 border-orange-400 hover:bg-slate-500" name="Limite" id="">
                 <option class="text-center" value="tout">Pas de limite (par défaut)</option>
                 <option value="1">Limite à 1</option>
                 <option value="10">Limite à 10</option>
@@ -67,7 +67,7 @@ include("pdo.php");
             </select>
               
                 <!-- Création/décla d'un bouton afin de soumettre son résultat pour ensuite éxécuter l'affichage. -->
-            <button class="my-2 text align-center rouned-md border-4 border-orange-400 hover:bg-slate-500" type="submit">
+            <button class="my-2 text align-center rounded-md border-4 border-orange-400 hover:bg-slate-500" type="submit">
                 Appliquer
             </button>
             </fieldset>  

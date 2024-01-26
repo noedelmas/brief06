@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="output.css">
     <script src="https://kit.fontawesome.com/0a3766d4f1.js" crossorigin="anonymous"></script>
 </head>
-<body w-16 md:w-32 lg:w-48>
+<body class="">
 
         <!-- Création du header pour l'afficher dans l'index. -->
 
-    <header class="w-full flex justify-center py-4">
+    <header class="flex justify-center py-4">
 
             <!-- Création du h1. -->
 
-        <h1 class="max-w-md w-16 md:w-32 lg:w-48 text-center border-4 border-slate-500 flex items-center justify-center">Mes favoris</h1>
+        <h1 class="md:flex w-16 md:w-32 lg:w-48 rounded-md text-center border-4 border-slate-500 flex items-center justify-center">Mes favoris</h1>
     </header>
