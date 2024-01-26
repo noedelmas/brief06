@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="output.css">
     <script src="https://kit.fontawesome.com/0a3766d4f1.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body w-16 md:w-32 lg:w-48>
 
         <!-- Création du header pour l'afficher dans l'index. -->
 
@@ -15,5 +15,5 @@
 
             <!-- Création du h1. -->
 
-        <h1 class="min-[320px]:text-center w-1/12 border-4 border-sky-500 flex items-center justify-center">Mes favoris</h1>
+        <h1 class="max-w-md w-16 md:w-32 lg:w-48 text-center border-4 border-slate-500 flex items-center justify-center">Mes favoris</h1>
     </header>

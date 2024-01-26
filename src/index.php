@@ -9,15 +9,16 @@ include("pdo.php");
         <form action="" method="GET">
 
             <!-- Rajout d'une bordure pour les filtres -->
-            <fieldset class="text-center flex flex-col border border-slate p-4">
+            <fieldset class="text-center flex flex-col border border-slate p-4 border-orange-400">
+                
                 <!-- SearchBar -->
                 <legend>
-                <h2 class="text-zinc-500">SearchBar</h2></legend>
-                <input class="rounded-md border border-orange-400" name="search_bar" type="search">
+                <h2 class="text-amber-500">Choix multiples</h2></legend>
+                <input class="rounded-md border border-slate-400" name="search_bar" type="search" placeholder="SearchBar">
 
                 <!-- Déclaration du nom : 'filtre_dom' puis création du résultat selon le domaine sur lequel on clique. -->
-            <select name="filtre_dom" class="my-4 rounded-md border-4 border-sky-500 hover:bg-slate-500">
-                <option class="text-center" value="aucun">-Tous les domaines (par défaut)-</option>
+            <select name="filtre_dom" class="my-4 rounded-md border-4 border-slate-500 hover:bg-slate-500">
+                <option class="text-center" value="aucun">Tous domaines (par défaut)</option>
             <?php            
                 $result = $pdo->query("SELECT * FROM domaine");
                 $domaine = $result->fetchAll(PDO::FETCH_ASSOC); 
@@ -32,8 +33,8 @@ include("pdo.php");
 
                     <!-- Création d'une selection par catégorie -->
             </select>
-                <select name="filtre_cat" class="my-1 rounded-md border-4 border-sky-500 hover:bg-slate-500">
-                    <option class="text-center" value="aucun">-Toutes catégories (par défaut)-</option>
+                <select name="filtre_cat" class="my-1 rounded-md border-4 border-slate-500 hover:bg-slate-500">
+                    <option class="text-center" value="aucun">Toutes catégories (par défaut)</option>
                     <?php
                       
                         $result = $pdo->query("SELECT * FROM categorie");
@@ -57,7 +58,7 @@ include("pdo.php");
                 </select>
                 
             <select class="my-2 text align-center rouned-md border-4 border-orange-400 hover:bg-slate-500" name="Limite" id="">
-                <option class="text-center" value="tout">-Limité à tous (par défaut)-</option>
+                <option class="text-center" value="tout">Pas de limite (par défaut)</option>
                 <option value="1">Limite à 1</option>
                 <option value="10">Limite à 10</option>
                 <option value="30">Limite à 30</option>
@@ -165,13 +166,13 @@ include("pdo.php");
             <tr class="border border-amber-500">
 
                     <!-- Création de chaque en-tête 1 par 1, colonne par colonne. -->
-                <th class="hover:bg-gray-50 bg-sky-500">Domaine</th>
-                <th class="bg-sky-500">Libellé</th>
-                <th class="bg-sky-500">Date ajout</th>
-                <th class="bg-sky-500">Catégories</th>
-                <th class="bg-sky-500">Lien</th>
-                <th class="bg-sky-500">Update</th>
-                <th class="bg-sky-500">Delete</th>
+                <th class="hover:bg-gray-50 bg-amber-500">Domaine</th>
+                <th class="bg-amber-500">Libellé</th>
+                <th class="bg-amber-500">Date ajout</th>
+                <th class="bg-amber-500">Catégories</th>
+                <th class="bg-amber-500">Lien</th>
+                <th class="bg-amber-500">Update</th>
+                <th class="bg-amber-500">Delete</th>
             </tr>
 
                 <!-- Appel de variable pour afficher les favoris dynamiquement. -->
@@ -180,7 +181,7 @@ include("pdo.php");
             ?>
 
                 <!-- Création de l'affichage des différents colonnes (1 sur 2 s'affiche en couleur.) -->
-            <tr class="old:bg-white even:bg-amber-200 hover:bg-zinc-500">
+            <tr class="odd:bg-zinc-500 even:bg-slate-400 hover:bg-indigo-500">
 
                 <!-- Création du contour orange + l'animation quand on passe la souris dessus. -->
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['nom_dom']?></td>
