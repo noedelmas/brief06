@@ -166,13 +166,13 @@ include("pdo.php");
             <tr class="border border-amber-500">
 
                     <!-- Création de chaque en-tête 1 par 1, colonne par colonne. -->
-                <th class="hover:bg-gray-50 bg-amber-500">Domaine</th>
-                <th class="bg-amber-500">Libellé</th>
-                <th class="bg-amber-500">Date ajout</th>
-                <th class="bg-amber-500">Catégories</th>
-                <th class="bg-amber-500">Lien</th>
-                <th class="bg-amber-500">Update</th>
-                <th class="bg-amber-500">Delete</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Domaine</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Libellé</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Date ajout</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Catégories</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Lien</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Update</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Delete</th>
             </tr>
 
                 <!-- Appel de variable pour afficher les favoris dynamiquement. -->
