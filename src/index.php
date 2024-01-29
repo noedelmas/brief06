@@ -173,6 +173,28 @@ include("pdo.php");
                 <th class="hover:bg-indigo-500 bg-amber-500">Lien</th>
                 <th class="hover:bg-indigo-500 bg-amber-500">Update</th>
                 <th class="hover:bg-indigo-500 bg-amber-500">Delete</th>
+
+                <th>
+
+                  <!------------------------Envoie vers la page individuelle------------------->
+                    <form action="singleFavori.php" method="get">
+                        <button name="id_fav" value="<?php echo $favori['id_fav']?>">
+                            <i class="fa-solid fa-eye text-blue-800 m-1 hover:text-white"></i>
+                        </button>
+                    </form>
+                    
+                    <!-- <button>
+                        <i class="fa-solid fa-pencil text-blue-800 m-1 hover:text-white"></i>
+                    </button> -->
+
+                    <!------------------------Envoie vers la page delete------------------------>
+                    <form action="delete.php" method="get">
+                        <button name="id_fav" value="<?php echo $favori['id_fav']?>">
+                        <i class="fa-solid fa-trash text-blue-800 m-1 hover:text-white"></i>
+                        </button>
+                    </form>
+                </th>
+
             </tr>
 
                 <!-- Appel de variable pour afficher les favoris dynamiquement. -->
@@ -191,6 +213,7 @@ include("pdo.php");
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><a href="<?php echo $favori['url']?>">Url</a></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-rotate" type="submit"></button></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-trash-can" type="submit"></button></td>
+                
             </tr>
 
             <?php
