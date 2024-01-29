@@ -79,7 +79,7 @@ include("pdo.php");
             <?php 
                 if (!empty($_GET['filtre_dom']) || !empty($_GET['filtre_cat'])){
                     if ($_GET['filtre_dom'] == "aucun" && $_GET['filtre_cat'] != "aucun"){
-                        $rqtsql="SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
+                        $rqtsql="SELECT  favoris.id_fav, domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
                         INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
                         INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav
                         INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat
@@ -89,7 +89,7 @@ include("pdo.php");
 
                     }else{
                         if($_GET['filtre_cat'] == "aucun" && $_GET['filtre_dom'] != "aucun"){
-                            $rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
+                            $rqtsql="SELECT  favoris.id_fav, domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
                             INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
                             INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav
                             INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat
@@ -98,7 +98,7 @@ include("pdo.php");
 
                         }else{
 
-                            $rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
+                            $rqtsql="SELECT  favoris.id_fav, domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
                                         INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
                                         INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav
                                         INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat
@@ -109,24 +109,24 @@ include("pdo.php");
 
                         }
                     }
-                        /*$rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favori 
-                                        INNER JOIN domaine ON favori.id_dom = domaine.id_dom
-                                        INNER JOIN cat_fav ON favori.id_fav = cat_fav.id_fav
+                        /*$rqtsql="SELECT  domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url FROM favoris 
+                                        INNER JOIN domaine ON favoris.id_dom = domaine.id_dom
+                                        INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav
                                         INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat
                                         
                                         WHERE domaine.id_dom =".$_GET['filtre_dom']." AND categorie.id_cat = ".$_GET['filtre_cat'].
-                                        " GROUP BY favori.id_fav ";*/
+                                        " GROUP BY favoris.id_fav ";*/
                     
                 
                     // $result = $pdo->query"SELECT * FROM `favoris` 
                     // INNER JOIN `domaine` ON favoris.id_dom = domaine.id_dom
                     // INNER JOIN `cat_fav` ON favoris.id_fav = cat_fav.id_fav 
                     // INNER JOIN `categorie` ON categorie.id_cat = cat_fav.id_cat
-                    // WHERE favoris.id_fav=".$_GET['favori'].";";
+                    // WHERE favoris.id_fav=".$_GET['favoris'].";";
                     // $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
                 
                 }else{ 
-                    $rqtsql = "SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favoris  
+                    $rqtsql = "SELECT  favoris.id_fav, domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favoris  
                     INNER JOIN domaine ON favoris.id_dom = domaine.id_dom 
                     INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav 
                     INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat";
@@ -134,7 +134,7 @@ include("pdo.php");
                     // echo "on";
                 }
                 if (!empty($_GET['search_bar'])){
-                     $rqtsql = "SELECT domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favoris  
+                     $rqtsql = "SELECT favoris.id_fav, domaine.nom_dom, libelle, date_creation, GROUP_CONCAT(nom_cat SEPARATOR ' | ') as 'liste_cat', url  FROM favoris  
                     INNER JOIN domaine ON favoris.id_dom = domaine.id_dom 
                     INNER JOIN cat_fav ON favoris.id_fav = cat_fav.id_fav 
                     INNER JOIN categorie ON categorie.id_cat = cat_fav.id_cat WHERE libelle LIKE '%".$_GET['search_bar']."%'";
@@ -171,29 +171,8 @@ include("pdo.php");
                 <th class="hover:bg-indigo-500 bg-amber-500">Date ajout</th>
                 <th class="hover:bg-indigo-500 bg-amber-500">Catégories</th>
                 <th class="hover:bg-indigo-500 bg-amber-500">Lien</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Update</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Read</th>
                 <th class="hover:bg-indigo-500 bg-amber-500">Delete</th>
-
-                <th>
-
-                  <!------------------------Envoie vers la page individuelle------------------->
-                    <form action="singleFavori.php" method="get">
-                        <button name="id_fav" value="<?php echo $favori['id_fav']?>">
-                            <i class="fa-solid fa-eye text-blue-800 m-1 hover:text-white"></i>
-                        </button>
-                    </form>
-                    
-                    <!-- <button>
-                        <i class="fa-solid fa-pencil text-blue-800 m-1 hover:text-white"></i>
-                    </button> -->
-
-                    <!------------------------Envoie vers la page delete------------------------>
-                    <form action="delete.php" method="get">
-                        <button name="id_fav" value="<?php echo $favori['id_fav']?>">
-                        <i class="fa-solid fa-trash text-blue-800 m-1 hover:text-white"></i>
-                        </button>
-                    </form>
-                </th>
 
             </tr>
 
@@ -211,8 +190,14 @@ include("pdo.php");
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['date_creation']?></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['liste_cat']?></td>
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><a href="<?php echo $favori['url']?>">Url</a></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-rotate" type="submit"></button></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button class="fa-solid fa-trash-can" type="submit"></button></td>
+                <form action="singleFavori.php" method="get">
+                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>"  class="fa-solid fa-eye" type="submit"></button></td>
+                </form>   
+                <form action="delete.php" method="get">
+                        <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-trash-can"></i></button></td>
+
+                    </form>
+
                 
             </tr>
 

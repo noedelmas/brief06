@@ -11,7 +11,7 @@ INNER JOIN categorie  ON categorie.id_cat = cat_fav.id_cat
 INNER JOIN domaine    ON domaine.id_dom = favoris.id_dom
 WHERE favoris.id_fav =" . $_GET['id_fav']; 
 $groupBy;
-echo $rqtsql;
+// echo $rqtsql;
 $result = $pdo->query($rqtsql);
 $favoris = $result->fetch(PDO::FETCH_ASSOC);
 
