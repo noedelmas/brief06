@@ -171,8 +171,8 @@ include("pdo.php");
                 <th class="hover:bg-indigo-500 bg-amber-500">Date ajout</th>
                 <th class="hover:bg-indigo-500 bg-amber-500">Catégories</th>
                 <th class="hover:bg-indigo-500 bg-amber-500">Lien</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Read</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Delete</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Lire</th>
+                <th class="hover:bg-indigo-500 bg-amber-500">Supprimer</th>
 
             </tr>
 
@@ -194,7 +194,7 @@ include("pdo.php");
                 <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>"  class="fa-solid fa-eye" type="submit"></button></td>
                 </form>   
                 <form action="delete.php" method="get">
-                        <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-trash-can"></i></button></td>
+                        <td class=" text-centerborder border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-trash-can"></i></button></td>
 
                     </form>
 
