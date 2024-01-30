@@ -27,9 +27,9 @@ $favoris = $result->fetch(PDO::FETCH_ASSOC);
     <title>Single Favori</title>
 </head>
 
-<body>
+<body class="flex justify-center">
 
-    <section >
+    <section>
         <div class="rounded w-1/3 flex justify-center text-gray-400 bg-blue-800">
             <h1></strong><?php echo $favoris['libelle'] ?></h1>
         </div>

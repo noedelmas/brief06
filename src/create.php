@@ -18,29 +18,28 @@ include("header.php")
 
         <label for="libelle">
             <p class="text-amber-500">Libellé :</p>
-            <input type="text">
         </label>   
-    
+    <input type="text" placeholder="Saisir le libellé.">
              
-            <label class="" for="nom_dom">
-                <p class="text-amber-500">Domaine :</p>
-                <input type="text">
+        <label for="nom_dom">
+            <p class="text-amber-500">Domaine :</p>
         </label>
-        
-        <label class="" for="categorie"> 
-                <p class="text-amber-500">Catégorie :</p>
-                <input type="text">
+        <input type="text" placeholder="Saisir le domaine.">
+
+        <label for="categorie"> 
+            <p class="text-amber-500">Catégorie :</p>
         </label>
-           
-        <label class="" for="date_creation">
+           <input type="text" placeholder="Saisir la catégorie.">
+
+        <label for="date_creation">
             <p class="text-amber-500">Date d'ajout :</p>
-            <input type="text">
+            <input type="text" placeholder="Saisir la date de création.">
         </label>
         
-        <label class="" for="date_creation">
+        <label for="date_creation">
             <p class="text-amber-500">Lien :</p>
-            <input type="text">
         </label>
+        <input type="text" placeholder="Saisir le libellé.">
         
             <button class="dark my-6 px-4 text align-center rounded-md border-4 dark:bg-white bg-slate-500 dark:border-amber-500 border-amber-500 dark:hover:bg-slate-500 hover:bg-slate-500" type="submit">
                 Ajouter aux favoris.
