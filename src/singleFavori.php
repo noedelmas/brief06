@@ -30,18 +30,18 @@ $favoris = $result->fetch(PDO::FETCH_ASSOC);
 <body>
 
     <section >
-        <div class="flex justify-center text-blue-800 bg-gray-200">
+        <div class="rounded w-1/3 flex justify-center text-gray-400 bg-blue-800">
             <h1></strong><?php echo $favoris['libelle'] ?></h1>
         </div>
-        <div class="flex justify-center  ">
-            <ul class="bg-gray-100">
-                <li><strong>Date de création: </strong><?php echo $favoris['date_creation'] ?></li>
-                <li><strong>URL: </strong><a href="<?php echo $favoris['url'] ?>"> <?php echo $favoris['url'] ?></a></li>
-                <li><strong>Catégorie: </strong><?php echo $favoris['nom_cat'] ?></li>
-                <li><strong>Domaine: </strong><?php echo $favoris['nom_dom'] ?></li>
+        <div class="flex justify-center py-6">
+            <ul class="flex justify-center text-center bg-gray-500 rounded-md">
+                <li class="pt-6 px-6"><strong>Date de création: </strong><?php echo $favoris['date_creation'] ?></li>
+                <li class="pt-6 px-12"><strong>URL: </strong><a href="<?php echo $favoris['url'] ?>"> <?php echo $favoris['url'] ?></a></li>
+                <li class="pt-6"><strong>Catégorie: </strong><?php echo $favoris['nom_cat'] ?></li>
+                <li class="pt-6"><strong>Domaine: </strong><?php echo $favoris['nom_dom'] ?></li>
                 <li>
                    <a href="index.php"> 
-                        <button class="font-bold bg-blue-400 hover:bg-blue-900 text-white px-4 py-2 rounded h-10 m-14 border
+                        <button class="font-bold bg-blue-500 hover:bg-blue-900 text-white px-4 py-2 rounded h-10 m-14 border
                                  border-gray-300 shadow-lg
                                     fas fa-arrow-left">
                         </button> 
