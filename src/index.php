@@ -9,15 +9,15 @@ include("pdo.php");
         <form action="" method="GET">
 
             <!-- Rajout d'une bordure pour les filtres -->
-            <fieldset class="text-center flex flex-col border border-slate p-4 border-orange-400">
+            <fieldset class="text-center flex flex-col border border-slate p-4 dark:border-indigo-500 border-orange-400">
 
                 <!-- SearchBar -->
                 <legend>
-                <h2 class="text-amber-500">Choix multiples</h2></legend>
-                <input class="rounded-md border border-slate-400" name="search_bar" type="search" placeholder="SearchBar">
+                <h2 class="dark:text-indigo-500 text-amber-500">Choix multiples</h2></legend>
+                <input class="rounded-md border-4 dark:border-indigo-500 border-slate-500" name="search_bar" type="search" placeholder="SearchBar">
 
                 <!-- Déclaration du nom : 'filtre_dom' puis création du résultat selon le domaine sur lequel on clique. -->
-            <select name="filtre_dom" class="my-4 rounded-md border-4 border-slate-500 hover:bg-slate-500">
+            <select name="filtre_dom" class="my-4 rounded-md border-4 dark:border-indigo-500 border-slate-500 hover:bg-slate-500">
                 <option class="text-center" value="aucun">Tous domaines (par défaut)</option>
             <?php            
                 $result = $pdo->query("SELECT * FROM domaine");
@@ -33,7 +33,7 @@ include("pdo.php");
 
                     <!-- Création d'une selection par catégorie -->
             </select>
-                <select name="filtre_cat" class="my-1 rounded-md border-4 border-slate-500 hover:bg-slate-500">
+                <select name="filtre_cat" class="my-1 rounded-md border-4 dark:border-indigo-500 border-slate-500 hover:bg-slate-500">
                     <option class="text-center" value="aucun">Toutes catégories (par défaut)</option>
                     <?php
                       
@@ -57,7 +57,7 @@ include("pdo.php");
                 ?>
                 </select>
                 
-            <select class="my-2 text align-center rounded-md border-4 border-orange-400 hover:bg-slate-500" name="Limite" id="">
+            <select class="dark my-2 text align-center rounded-md border-4 dark:border-indigo-500 border-amber-500 dark:hover:bg-zinc-500 hover:bg-slate-500" name="Limite" id="">
                 <option class="text-center" value="tout">Pas de limite (par défaut)</option>
                 <option value="1">Limite à 1</option>
                 <option value="10">Limite à 10</option>
@@ -67,7 +67,7 @@ include("pdo.php");
             </select>
               
                 <!-- Création/décla d'un bouton afin de soumettre son résultat pour ensuite éxécuter l'affichage. -->
-            <button class="my-2 text align-center rounded-md border-4 border-orange-400 hover:bg-slate-500" type="submit">
+            <button class="dark my-2 text align-center rounded-md border-4 dark:bg-white bg-slate-500 dark:border-indigo-500 border-amber-500 dark:hover:bg-slate-500 hover:bg-slate-500" type="submit">
                 Appliquer
             </button>
             </fieldset>  
@@ -162,17 +162,17 @@ include("pdo.php");
     <section class="w-full flex items-center justify-center">
 
                 <!-- Création de la table afin d'afficher les en-têtes + contour orange. -->
-        <table>
-            <tr class="border border-amber-500">
+        <table class="">
+            <tr class="border dark:border-indigo-500 border-amber-500">
 
                     <!-- Création de chaque en-tête 1 par 1, colonne par colonne. -->
-                <th class="hover:bg-indigo-500 bg-amber-500">Domaine</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Libellé</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Date ajout</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Catégories</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Lien</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Read</th>
-                <th class="hover:bg-indigo-500 bg-amber-500">Delete</th>
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Domaine</th>
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Libellé</th>
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Date ajout</th>
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Catégories</th>
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Lien</th>
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Lire</th>
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Supprimer</th>
 
             </tr>
 
@@ -182,23 +182,21 @@ include("pdo.php");
             ?>
 
                 <!-- Création de l'affichage des différents colonnes (1 sur 2 s'affiche en couleur.) -->
-            <tr class="odd:bg-zinc-500 even:bg-slate-400 hover:bg-indigo-500">
+            <tr class="odd:bg-zinc-500 even:bg-slate-400 dark:hover:bg-amber-500 hover:bg-indigo-500">
 
                 <!-- Création du contour orange + l'animation quand on passe la souris dessus. -->
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['nom_dom']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['libelle']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['date_creation']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['liste_cat']?></td>
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><a href="<?php echo $favori['url']?>">Url</a></td>
+                <td class="border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['nom_dom']?></td>
+                <td class="border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['libelle']?></td>
+                <td class="border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['date_creation']?></td>
+                <td class="border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><?php echo $favori['liste_cat']?></td>
+                <td class="border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-indigo-500 dark:text-white dark:hover:bg-gray-600"><a class="hover:text-indigo-500" href="<?php echo $favori['url']?>">Url</a></td>
                 <form action="singleFavori.php" method="get">
-                <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>"  class="fa-solid fa-eye" type="submit"></button></td>
+                    <td class="border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-indigo-500 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>"  class="fa-solid fa-eye  hover:text-indigo-500" type="submit"></button></td>
                 </form>   
                 <form action="delete.php" method="get">
-                        <td class="border border-amber-500 px-6 py-4 font-medium text-gray-900 whitespace-nowrap hover:bg-gray-50 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-trash-can"></i></button></td>
+                    <td class="text-center border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium hover:bg-indigo-500 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-trash-can  hover:text-indigo-500"></i></button></td>
+                </form>
 
-                    </form>
-
-                
             </tr>
 
             <?php
