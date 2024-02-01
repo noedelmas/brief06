@@ -156,10 +156,10 @@ include("pdo.php");
             ?>
 
                 <!-- Création d'une balise main regroupant tout mon tableau -->
-<main class="w-full mt-6">
+<main class="w-screen flex justify-center mt-6">
           
                 <!-- Création de la classe section. -->
-    <section class="w-full flex items-center justify-center">
+    <section class="flex items-center justify-center">
 
                 <!-- Création de la table afin d'afficher les en-têtes + contour orange. -->
         <table class="">
@@ -173,7 +173,7 @@ include("pdo.php");
                 <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Lien</th>
                 <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Lire</th>
                 <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Supprimer</th>
-
+                <th class="dark:hover:bg-amber-500 dark:bg-indigo-500 bg-amber-500">Éditer</th>
             </tr>
 
                 <!-- Appel de variable pour afficher les favoris dynamiquement. -->
@@ -196,7 +196,9 @@ include("pdo.php");
                 <form action="delete.php" method="get">
                     <td class="text-center border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium hover:bg-indigo-500 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-trash-can  hover:text-indigo-500"></i></button></td>
                 </form>
-
+                <form action="update.php" method="get">
+                    <td class="text-center border dark:border-indigo-500 border-amber-500 px-6 py-4 font-medium hover:bg-indigo-500 dark:text-white dark:hover:bg-gray-600"><button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-regular fa-pen-to-square hover:text-indigo-500"></i></button></td>
+                </form>
             </tr>
 
             <?php
