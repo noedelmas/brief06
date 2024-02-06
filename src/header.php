@@ -6,6 +6,9 @@
     <title>php pdo</title>
     <link rel="stylesheet" href="output.css">
     <script src="https://kit.fontawesome.com/0a3766d4f1.js" crossorigin="anonymous"></script>
+    <script language="JavaScript" type="text/javascript">
+    function checkDelete(){
+        return confirm('Are you sure?');}</script>
 </head>
 <body class="bg-indigo-500 dark:bg-slate-800">
 
@@ -13,9 +16,9 @@
     <header class="flex justify-center py-4 dark">
 
             <!-- Création du h1. -->
-        <h1 class="md:flex w-16 md:w-32 lg:w-48 rounded-md border-4 bg-amber-400 border-indigo-500 flex justify-around dark:text-black">Mes favoris :
+        <h1 class="md:flex w-16 md:w-32 lg:w-48 rounded-md border-4 border-amber-500 flex justify-around dark:text-indigo-500">Mes favoris :
             <form action="create.php" method="get">
-            <button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-plus rounded hover:bg-amber-400 dark:text-black dark:hover:bg-indigo-500"></i></button></td>
+            <button name="id_fav" value="<?php echo $favori['id_fav']?>" type="submit"><i class="fa-solid fa-plus rounded hover:bg-amber-400 dark:text-amber-500 dark:hover:bg-indigo-500"></i></button></td>
             </form>
         </h1>
     </header>

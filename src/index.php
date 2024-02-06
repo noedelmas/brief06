@@ -9,7 +9,7 @@ include("pdo.php");
         <form action="" method="GET">
 
             <!-- Rajout d'une bordure pour les filtres -->
-            <fieldset class="text-center flex flex-col border border-slate p-4 dark:border-indigo-500 border-orange-400">
+            <fieldset class="text-center flex flex-col border border-slate p-4 dark:border-amber-500 border-orange-400">
 
                 <!-- SearchBar -->
                 <legend>
@@ -17,7 +17,7 @@ include("pdo.php");
                 <input class="rounded-md border-4 dark:border-indigo-500 border-slate-500" name="search_bar" type="search" placeholder="SearchBar">
 
                 <!-- Déclaration du nom : 'filtre_dom' puis création du résultat selon le domaine sur lequel on clique. -->
-            <select name="filtre_dom" class="my-4 rounded-md border-4 dark:border-indigo-500 border-slate-500 hover:bg-slate-500">
+            <select name="filtre_dom" class="dark my-2 text align-center rounded-md border-4 dark:text-amber-500 dark:border-indigo-500 border-amber-500 dark:hover:bg-zinc-500 bg-slate-500">
                 <option class="text-center" value="aucun">Tous domaines (par défaut)</option>
             <?php            
                 $result = $pdo->query("SELECT * FROM domaine");
@@ -25,15 +25,15 @@ include("pdo.php");
                     foreach($domaine as $un_domaine){
             ?>
 
-                    <!-- Création d'une option afin de faire comprendre à la machine qu'il faut afficher le domaine par rapport à l'id. -->
+                    <!-- Création d'une option où on affiche le domaine par rapport à l'id. -->
                     <option value="<?php echo $un_domaine['id_dom']?>"><?php echo $un_domaine['nom_dom']?></option>
                 <?php
                     }
                 ?>
 
-                    <!-- Création d'une selection par catégorie -->
+                    <!-- Création d'une sélection par catégorie. -->
             </select>
-                <select name="filtre_cat" class="my-1 rounded-md border-4 dark:border-indigo-500 border-slate-500 hover:bg-slate-500">
+                <select name="filtre_cat" class="dark my-2 text align-center rounded-md border-4 dark:text-amber-500 dark:border-indigo-500 border-amber-500 dark:hover:bg-zinc-500 bg-slate-500">
                     <option class="text-center" value="aucun">Toutes catégories (par défaut)</option>
                     <?php
                       
@@ -57,7 +57,7 @@ include("pdo.php");
                 ?>
                 </select>
                 
-            <select class="dark my-2 text align-center rounded-md border-4 dark:border-indigo-500 border-amber-500 dark:hover:bg-zinc-500 hover:bg-slate-500" name="Limite" id="">
+            <select class="dark my-2 text align-center rounded-md border-4 dark:text-amber-500 dark:border-indigo-500 border-amber-500 dark:hover:bg-zinc-500 bg-slate-500" name="Limite" id="">
                 <option class="text-center" value="tout">Pas de limite (par défaut)</option>
                 <option value="1">Limite à 1</option>
                 <option value="10">Limite à 10</option>
@@ -159,10 +159,10 @@ include("pdo.php");
 <main class="w-screen flex justify-center mt-6">
           
                 <!-- Création de la classe section. -->
-    <section class="flex items-center justify-center">
+    <section class="w-16 md:w-32 lg:w-48 flex items-center justify-center">
 
                 <!-- Création de la table afin d'afficher les en-têtes + contour orange. -->
-        <table class="">
+        <table class="w-16 md:w-32 lg:w-48">
             <tr class="border dark:border-indigo-500 border-amber-500">
 
                     <!-- Création de chaque en-tête 1 par 1, colonne par colonne. -->

@@ -62,7 +62,7 @@ if (!empty($_POST)){
         <label for="url">
             <p class="text-amber-400">URL :</p>
         </label>
-            <input class="mb-6" name="lien" type="text" placeholder="Saisir le lien :">
+            <input type="url" class="mb-6" name="lien" type="text" placeholder="Saisir le lien :">
 
             <?php 
             $rqtsql = "SELECT * FROM `domaine`;";

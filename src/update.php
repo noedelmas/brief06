@@ -64,13 +64,12 @@ header("Location:index.php");
 
             $result = $pdo->query($rqtsql);
             $noms_dom = $result->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($noms_dom);
             ?>
 
         <label for="nom_dom">
             <p class="text-amber-400">Domaine :</p>
         </label>
-        <select class="mb-6" type="text" name="dom" placeholder="Saisir le domaine.">
+        <select class="mb-6" type="text" name="dom">
             <option>Veuillez sélectionner un domaine</option>
                 <?php
                 foreach($noms_dom as $nom_dom){ 
@@ -96,12 +95,57 @@ header("Location:index.php");
                     </label>
                     
             <?php
-                foreach($noms_cat as $nom_cat){ ?>
+                // echo '<pre>';
+                // var_dump($_GET[
+                //     'id_fav'
+                // ]);
+                // echo '</pre>';
+
+                // $result = $pdo->query("SELECT DISTINCT id_cat FROM `favoris`
+                // INNER JOIN  'cat_fav' ON favoris.id_fav = cat_fav.id_fav
+                // WHERE favoris.id_fav = ".$_GET['id_fav'].";");
+                // $fav_cats = $result->fetchAll(PDO::FETCH_ASSOC);
+               
+                $result = $pdo->query("SELECT DISTINCT id_cat FROM `favoris` 
+                INNER JOIN `cat_fav` ON favoris.id_fav=cat_fav.id_fav 
+                WHERE favoris.id_fav=".$_GET['id_fav'].";");
+                $favoricats = $result->fetchAll(PDO::FETCH_ASSOC); 
+            
+                foreach($noms_cat as $nom_cat){ 
+                    
+                    // réinitialise le statue de checked a chaque tour de la boucle
+                $checked = "";
+                    // réinitialise le statue de checked a chaque tour de la boucle
+
+                    // vérifie si la checkbox doit avoir l'attribut checked
+                    foreach($favoricats as $favoricat){
+                        if($favoricat['id_cat'] == $nom_cat['id_cat']){
+                            $checked = 'checked';
+                        }
+                    }
+                    // vérifie si la checkbox doit avoir l'attribut checked
+
+                    ?>
+                    <span class="flex justify-start">
+
+                        <input class = "m-2" type="checkbox" name="cats[]" 
+                        id="<?php echo $nom_cat['nom_cat'] ?>" value = "<?php echo $nom_cat['id_cat'] ?>" <?php echo $checked?>>
+                        <label class = "m-2 text-white" for="<?php echo $nom_cat['nom_cat'] ?>"><?php echo $nom_cat['nom_cat'] ?></label>
+                    </span>
+                <?php
+
+
+                }
+
+                ?>
+<!--             
                 <div class="flex">
-                    <input value="<?=$nom_cat['id_cat']?>" name="noms_cat[]" type= "checkbox">
-                    <label for=""><?=$nom_cat['nom_cat']?></label>
-                </div>
-            <?php } ?>
+                    <input value="<?//=
+                    // $nom_cat['id_cat']?>" name="noms_cat[]" type= "checkbox">
+                    <label for=""><?//=
+                    // $nom_cat['nom_cat']?></label>
+                </div> -->
+            
 
             <button class="dark my-6 px-4 text align-center rounded-md border-4 dark:bg-white bg-slate-500 dark:border-amber-400 border-amber-400 dark:hover:bg-slate-500 hover:bg-slate-500" type="submit">
                 Ajouter aux favoris.
